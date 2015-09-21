@@ -9,6 +9,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 
+// *** config file *** //
+var config = require('./_config');
+
+// *** mongood *** //
+mongoose.connect(config.mongoURI[app.settings.env], function(err, res){
+    if(err) {
+        console.log('Error connecting to the Database. '+ err);
+    } else {
+        console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
+    }
+});
 
 // *** routes *** //
 var routes = require('./routes/index.js');

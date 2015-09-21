@@ -15,7 +15,8 @@ router.get('/llamas', function(req, res, next) {
 
 //post one
 router.post('/llamas', function(req, res, next) {
-  var newLlama = new Llama({
+ 
+    var newLlama = new Llama({
     name: req.body.name,
     age: req.body.age,
     spitter: req.body.spitter
@@ -24,7 +25,7 @@ router.post('/llamas', function(req, res, next) {
     if (err) {
       res.json({ 'message': err })
     } else {
-      res.json(llama);
+      res.json({'SUCCESS':llama});
     }
   })
 });
@@ -46,7 +47,7 @@ router.put('/llama/:id', function(req, res, next) {
     if(err){
       res.json({"message": err})
     } else {
-      res.json(llama);
+      res.json({'UPDATED': llama});
     }
   })
 });
@@ -57,8 +58,8 @@ router.delete('/llama/:id', function(req, res, next) {
     if(err){
       res.json({"message": err})
     } else {
-      res.json(llama);
+      res.json({"REMOVED": llama});
     }
-  }))
+  })
 });
 module.exports = router;
